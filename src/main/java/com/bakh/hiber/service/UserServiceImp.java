@@ -42,10 +42,22 @@ public class UserServiceImp implements UserService {
    public List<Car> listCars() {
       return userDao.listCars();
    }
-
+   
    @Transactional
    @Override
    public User userWithCar(String model, int series) {
-      return userDao.userWithCar(model, series);
+      User user = null;
+      try {
+         user = userDao.userWithCar(model, series);
+      } catch (NoResultException e){
+         System.out.println("There is not a single user with a car of this series and model!");
+      }
+      return user;
    }
+   
+   /*@Transactional
+   @Override
+   public User userWithCar(String model, int series) {
+      return userDao.userWithCar(model, series);
+   }*/
 }
