@@ -17,5 +17,5 @@ public interface UserService {
     List<Car> listCars();
 
 
-    List<User> listUsersWithCar(String model, int series);
+    User userWithCar(String model, int series);
 }
